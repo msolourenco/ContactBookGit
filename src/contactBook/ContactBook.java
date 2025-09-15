@@ -107,4 +107,26 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    private int searchIndexByNumber(int phone) {
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found)
+            if (contacts[i].getPhone() == phone)
+                found = true;
+            else
+                i++;
+        if (found) result = i;
+        return result;
+    }
+
+    //Pre: number != null
+    public boolean hasNumber(int number){
+        return searchIndexByNumber(number) >= 0;
+    }
+
+    //Pre : number != null && hasNumber(number)
+    public Contact getNumber(int number){
+        return contacts[searchIndexByNumber(number)];
+    }
 }
