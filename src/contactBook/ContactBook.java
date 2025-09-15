@@ -63,12 +63,17 @@ public class ContactBook {
     }
 
     public boolean existsDuplicatePhoneNumbers() {
-        HashSet<Integer> seen = new HashSet<>();
-        for (Contact contact : contacts) {
-            int phoneNumber = contact.getPhone();
-            if (seen.contains(phoneNumber)) return true;
+        if (getNumberOfContacts() != 0) {
+            HashSet<Integer> seen = new HashSet<>();
 
-            seen.add(phoneNumber);
+            initializeIterator();
+            while (hasNext()) {
+                Contact contact = next();
+                int phoneNumber = contact.getPhone();
+                if (seen.contains(phoneNumber)) return true;
+
+                seen.add(phoneNumber);
+            }
         }
 
         return false;
