@@ -104,9 +104,9 @@ public class ContactBook {
                 i++;
         if (found) result = i;
         return result;
-    };
+    }
 
-    public Contact get_number(int number){
+    public Contact getNumber(int number){
         return contacts[searchIndexByNumber(number)];
-    };
+    }
 }
