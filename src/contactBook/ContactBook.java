@@ -2,6 +2,8 @@ package contactBook;
 
 import contactBook.Contact;
 
+import java.util.HashSet;
+
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -58,6 +60,18 @@ public class ContactBook {
     //Pre: name != null && hasContact(name)
     public void setEmail(String name, String email) {
         contacts[searchIndex(name)].setEmail(email);
+    }
+
+    public boolean existsDuplicatePhoneNumbers() {
+        HashSet<Integer> seen = new HashSet<>();
+        for (Contact contact : contacts) {
+            int phoneNumber = contact.getPhone();
+            if (seen.contains(phoneNumber)) return true;
+
+            seen.add(phoneNumber);
+        }
+
+        return false;
     }
 
     private int searchIndex(String name) {
