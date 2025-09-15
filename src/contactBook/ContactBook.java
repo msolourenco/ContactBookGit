@@ -106,6 +106,12 @@ public class ContactBook {
         return result;
     }
 
+    //Pre: number != null
+    public boolean hasNumber(int number){
+        return searchIndexByNumber(number) >= 0;
+    }
+
+    //Pre : number != null && hasNumber(number)
     public Contact getNumber(int number){
         return contacts[searchIndexByNumber(number)];
     }
